@@ -1,0 +1,47 @@
+<h2>Admin Panel</h2>
+<a href="new-product.php" class="btn admin-btn">Un nouveau produit ? Ajoute le !</a>
+<a href="change-news.php" class="btn admin-btn">Modifier la zone pub</a>
+<table class="admin_table">
+    <thead>
+        <tr>
+            <th>Aperçu</th>
+            <th>Marque</th>
+            <th>Modele</th>
+            <th>Catégorie</th>
+            <th>Description</th>
+            <th><i class="fas fa-pencil-alt"></i></th>
+            <th><i class="fas fa-trash-alt"></i></th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($products as $product) : ?>
+            <?php $directory = "img/products/" . $product['marque'] . "/" . $product['modele'] . "/";
+
+                if ($files = glob("../../" . $directory . "/*")) {
+                    $files = scandir("../../" . $directory);
+                    $firstFile = $directory . $files[2];
+                } else { 
+                    $firstFile = "img/products/image-not-found.jpg";
+                } 
+                ?>
+        <tr>
+            <td><img src="<?= htmlspecialchars($firstFile); ?>" alt=""></td>
+            <td><?= htmlspecialchars($product['marque']); ?></td>
+            <td><?= htmlspecialchars($product['modele']); ?></td>
+            <td><?= htmlspecialchars($product['category_name']); ?></td>
+            <td><?php if (strlen($product['description']) > 50) : ?>
+                <?= substr(htmlspecialchars($product['description']), 0, 50); ?>&nbsp;[...]
+                <?php else : ?>
+                <?= htmlspecialchars($product['description']); ?>
+                <?php endif ?>
+            </td>
+            <td>
+                <a class="ptn" href="edit-product.php?id=<?= intval($product['id']); ?>">
+                    <i class="fas fa-pencil-alt"></i>
+                </a>
+            </td>
+            <td><a href="delete-product.php?id=<?= intval($product['id']); ?>" onclick="return window.confirm(`Êtes vous sur de vouloir supprimer ce produit ?!`)"><i class="fas fa-trash-alt"></i></a></td>
+        </tr>
+        <?php endforeach ?>
+    </tbody>
+</table>

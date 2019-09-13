@@ -1,0 +1,67 @@
+<section id="contact">
+    <h2>Contact</h2>
+    <div class="contact-infos-bg">
+        <section id="contact-infos">
+            <div>
+                <h3 class="bold">Comment nous contacter ?</h3>
+                <p>Tél : +33 (0) 6 01 02 03 04</p>
+                <a href="mailto:contact@jany-chaussures.fr">contact@specimen.fr</a>
+                <a href="contact.php#contact-form-anchor" class="info-down btn admin-btn">Utilisez notre formulaire de contact ! <i class="fas fa-arrow-down"></i></a></p>
+
+            </div>
+            <div>
+                <h3 class="bold">Où nous trouver ?</h3>
+                <p>28 Avenue du Petit Port, 73100 Aix-les-Bains</p>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d22295.63006168299!2d5.909542!3d45.6919!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x57e697fee699b320!2sJany%20Chaussures!5e0!3m2!1sfr!2sfr!4v1566994344220!5m2!1sfr!2sfr" width="600" height="350" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+            </div>
+        </section>
+    </div>
+
+    <div id="contact-form-anchor" class="contact-form-background">
+        <h3>formulaire de contact</h3>
+        <?php if (!empty($errors)) : ?>
+            <section class="danger container">
+                <p>Vous n'avez pas rempli les champs correctement</p>
+                <ul>
+                    <?php foreach ($errors as $error) : ?>
+                        <li><?= htmlspecialchars($error); ?></li>
+                    <?php endforeach; ?>
+                </ul>
+            </section>
+        <?php endif; ?>
+        <form id="contact-form" class="form contact-form container" action="" method="POST">
+            <div>
+                <label for="firstname">Prénom * </label>
+                <input class="form-input short" type="text" name="firstname" id="firstname" placeholder="Votre prénom" value="<?php echo isset($_POST["firstname"]) ? htmlspecialchars($_POST["firstname"]) : ''; ?>">
+
+            </div>
+            <div>
+                <label for="lastname">Nom * </label>
+                <input class="form-input short" type="text" name="lastname" id="lastname" placeholder="Votre nom de famille" value="<?php echo isset($_POST["lastname"]) ? htmlspecialchars($_POST["lastname"]) : ''; ?>">
+
+            </div>
+            <br style="clear:both;" />
+            <div>
+                <label for="email">Email * </label>
+                <input class="form-input short" type="email" name="email" id="email" placeholder="Votre email" value="<?php echo isset($_POST["email"]) ? htmlspecialchars($_POST["email"]) : ''; ?>">
+
+            </div>
+            <div>
+                <label for="society">Société</label>
+                <input class="form-input short" type="text" name="society" id="society" placeholder="Votre société" value="<?php echo isset($_POST["society"]) ? htmlspecialchars($_POST["society"]) : ''; ?>">
+            </div>
+            <br style="clear:both;" />
+
+
+            <label class="contact-form-last-label" for="content">Message *</label>
+            <textarea class="form-input" rows="20" cols="50" id="content" name="content" placeholder="Votre message" rows="3"><?php echo isset($_POST["content"]) ? htmlspecialchars($_POST["content"]) : ''; ?></textarea>
+
+
+            <input type="text" id="website" name="website" />
+
+            <button class="btn admin-btn" type="submit">Envoyer</button>
+        </form>
+    </div>
+
+
+</section>

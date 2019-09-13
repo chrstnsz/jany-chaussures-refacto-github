@@ -1,0 +1,45 @@
+<div class="products_bg">
+    <section class="container product-deck">
+        <h2>Collection</h2>
+        <form id="collection_brand_form" action="products.php" class="form">
+            <label><i class="fas fa-arrow-down"></i>Filtrez par marques
+                <select class="form-input select_marque" id="marque" name="marque" onchange="this.form.submit();" accept-charset="UTF-8">
+                    <option>Marques</option>
+                    <option value="all">Toutes</a></option>
+                    <?php foreach ($marques as $marque) : ?>
+                        <option value="<?= htmlspecialchars($marque['marque']) ?>"><?= htmlspecialchars($marque['marque']) ?></option>
+                    <?php endforeach ?>
+                </select>
+            </label>
+        </form>
+        <div class="product_card">
+            <?php foreach ($products as $product) : ?>
+
+                <?php $directory = "img/products/" . $product['marque'] . "/" . $product['modele'] . "/";
+                    $files = scandir("../../" . $directory);
+                    $firstFile = $directory . $files[2]; ?>
+                <article>
+                    <?php if (isset($product['id']) && !empty($product['id'])) : ?>
+                        <a href="show-product.php?id=<?= intval($product['id']); ?>"><img src="<?= htmlspecialchars($firstFile); ?>" alt=""></a>
+                        <p class="bold marque_pres"><?= htmlspecialchars($product['marque']); ?></span></p>
+                        <p class="modele_pres"><?= htmlspecialchars($product['modele']); ?></p>
+                        <a href="show-product.php?id=<?= intval($product['id']); ?>" class="btn btn-product">Voir plus</a>
+                    <?php endif ?>
+                </article>
+            <?php endforeach ?>
+        </div>
+        <div class="pagination">
+            <?php for ($i = 1; $i <= $pagesTotales; $i++) :
+                if ($i == $page) : ?>
+                    <a href="" class="page_obj active"> <?= $i ?></a>
+                    <?php else :
+                            if (isset($_GET['marque']) && !empty($_GET['marque'])) : ?>
+                        <a class="page_obj" href="products.php?marque=<?= $_GET['marque'] ?>&page=<?= $i ?>"><?= $i ?></a>
+                    <?php else : ?>
+                        <a class="page_obj" href="products.php?page=<?= $i ?>"><?= $i ?></a>
+            <?php endif;
+                endif;
+            endfor ?>
+        </div>
+    </section>
+</div>

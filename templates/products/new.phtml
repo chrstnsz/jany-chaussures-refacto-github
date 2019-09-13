@@ -1,0 +1,61 @@
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+?>
+<h2>Nouveau produit</h2>
+<?php if (!empty($errors)) : ?>
+    <section class="danger container">
+        <p>Vous n'avez pas rempli les champs correctement</p>
+        <ul>
+            <?php foreach ($errors as $error) : ?>
+                <li><?= htmlspecialchars($error); ?></li>
+            <?php endforeach; ?>
+        </ul>
+    </section>
+<?php endif; ?>
+<form class="form container" action="new-product.php" method="POST" enctype="multipart/form-data">
+    <fieldset>
+        <legend>Téléchargez une ou des photos *</legend>
+        <label>
+            <input type="file" class="input-file" name="file[]" id="file" multiple>
+        </label><br>
+    </fieldset>
+    <fieldset>
+        <legend>Marque *</legend>
+        <label>
+            <select class="form-input" id="marque" name="marque">
+                <option value="">Choisir une marque déjà enregistrée</option>
+                <?php foreach ($marques as $marque) : ?>
+                    <option value="<?= htmlspecialchars($marque['marque']); ?>"><?= htmlspecialchars($marque['marque']); ?></option>
+                <?php endforeach ?>
+            </select>
+        </label>
+        <p>Ou</p>
+        <label>
+            <input class="form-input" id="add_marque" type="text" name="add_marque" placeholder="Nouvelle marque">
+        </label>
+    </fieldset>
+    <fieldset>
+        <legend>Modèle *</legend>
+        <label>
+            <input class="form-input" id="modele" type="text" name="modele" placeholder="Nom du modèle">
+        </label>
+    </fieldset>
+    <fieldset>
+        <legend>Catégories</legend>
+        <?php foreach ($categories as $categorie) : ?>
+            <label>
+                <input class="checkbox-input" type="checkbox" name="categorie[]" id="<?= intval($categorie['category_id']); ?>" value="<?= intval($categorie['category_id']); ?>"><?= htmlspecialchars($categorie['title']); ?>
+            </label><br>
+        <?php endforeach; ?>
+    </fieldset>
+    <fieldset>
+        <legend>Description *</legend>
+        <label>
+            <textarea class="form-input" id="description" type="text" name="description" placeholder="Entrez une description"></textarea>
+        </label>
+    </fieldset>
+
+    <button class="btn btn-product admin-btn" type="submit">Enregistrer</button>
+</form>

@@ -1,0 +1,24 @@
+<section>
+    <h2><?= htmlspecialchars($product['marque']); ?> - <?= htmlspecialchars($product['modele']); ?></h2>
+
+    <div class="show_product container">
+        <div class="img_target">
+            <div>
+                <img id="expandedImg" src="<?= htmlspecialchars($firstFile); ?>">
+            </div>
+            <div class="show_img">
+                <?php foreach ($images as $image) : ?>
+                    <div class="column">
+                        <img class="js-click" src="img/products/<?= $image ?>" />
+                    </div>
+                <?php endforeach ?>
+            </div>
+        </div>
+        <div class="product_infos">
+            <p class="bold marque_pres"><?= htmlspecialchars($product['marque']); ?></p>
+            <p class="modele_pres"><?= htmlspecialchars($product['modele']); ?></p>
+            <p class="product_desc"><?= htmlspecialchars($product['description']); ?></p>
+            <a href="contact.php" class="btn btn-show">Ce modèle vous plait ? Cliquez ici !</a>
+        </div>
+    </div>
+</section>

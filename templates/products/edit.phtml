@@ -1,0 +1,67 @@
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+?>
+<h2><?= htmlspecialchars($product['marque']); ?> - <?= htmlspecialchars($product['modele']); ?></h2>
+
+<?php if (!empty($errors)) : ?>
+    <section class="danger container">
+        <p>Vous n'avez pas rempli les champs correctement</p>
+        <ul>
+            <?php foreach ($errors as $error) : ?>
+                <li><?= htmlspecialchars($error); ?></li>
+            <?php endforeach; ?>
+        </ul>
+    </section>
+<?php endif; ?>
+
+<form class="form container" action="edit-product.php?id=<?= intval($product['id']); ?>" method="POST" enctype="multipart/form-data">
+
+    <input type="hidden" name="product_id" value="<?= intval($product['id']); ?>">
+
+    <fieldset>
+        <legend>Remplacer la photo</legend>
+        <div class="edit-img-bar">
+            <?php foreach ($images as $image) : ?>
+                <div class="single-img">
+                    <img src="img/products/<?= $image ?>" />
+                    <a href="delete-photo.php?photo=<?= $image ?>&id=<?= $product['id']; ?>" onclick="return window.confirm(`Êtes vous sur de vouloir supprimer cette photo ?!`)">Supprimer la photo</a>
+                </div>
+            <?php endforeach ?>
+        </div>
+
+        <label>
+            <input class="input-file" type="file" name="file[]" id="file" multiple>
+        </label><br>
+    </fieldset>
+    <fieldset>
+        <legend>Catégories</legend>
+        <?php
+        foreach ($categories_in_product as $category) : ?>
+            <label>
+                <input type="hidden" name="<?= htmlspecialchars($category['title']); ?>" id="<?= intval($category['category_id']); ?>" value="0">
+                <input class="checkbox-input" type="checkbox" name="<?= htmlspecialchars($category['title']); ?>" id="<?= intval($category['category_id']); ?>" value="<?= intval($category['category_id']); ?>" checked><?= htmlspecialchars($category['title']); ?>
+            </label><br>
+        <?php endforeach; ?>
+
+        <?php foreach ($array3 as $key) :
+            $idValue = array_search($key, array_column($categories, 'title')); ?>
+
+            <label>
+                <input type="hidden" name="<?= htmlspecialchars($key); ?>" id="<?= intval($categories[$idValue]['category_id']); ?>" value="0">
+                <input class="checkbox-input" type="checkbox" name="<?= htmlspecialchars($key); ?>" id="<?= intval($categories[$idValue]['category_id']); ?>" value="<?= intval($categories[$idValue]['category_id']); ?>"><?= htmlspecialchars($key); ?>
+            </label><br>
+        <?php endforeach; ?>
+    </fieldset>
+    <fieldset>
+        <legend>Modifier la description</legend>
+        <label>
+            <textarea class="form-input" id="description" type="text" name="description"><?= htmlspecialchars($product['description']); ?></textarea>
+        </label>
+    </fieldset>
+
+    <button class="btn btn-product admin-btn" type="submit">Editer</button>
+
+
+</form>

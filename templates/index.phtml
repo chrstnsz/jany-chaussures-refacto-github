@@ -1,0 +1,68 @@
+    <style>
+        #news {
+            background-image: url('img/news/<?= $selected_category['title']; ?>/news-background.jpg');
+        }
+    </style>
+    <section id="news">
+
+        <div id="news_text">
+            <h2>Nouvelle collection <?= ucfirst($selected_category['title']); ?> !</h2>
+            <a href="products.php?sort=<?= htmlspecialchars($selected_category['title']); ?>" class="btn btn-news">Découvrir</a>
+        </div>
+    </section>
+    <section class="container product_deck">
+        <h2>Top des ventes</h2>
+        <div class="product_card">
+            <?php foreach ($top_products as $product) : ?>
+            <?php $directory = "img/products/" . $product['marque'] . "/" . $product['modele'] . "/";
+                if ($files = glob("../../" . $directory . "/*")) {
+                    $files = scandir("../../" . $directory);
+
+                    $firstFile = $directory . $files[2];
+                } else {
+                    $firstFile = "img/products/image-not-found.jpg";
+                } 
+                ?>
+            <article>
+                <a href="show-product.php?id=<?= intval($product['id']); ?>"><img src="<?= htmlspecialchars($firstFile) ?>" alt=""></a>
+                <p class="bold marque_pres"><?= htmlspecialchars($product['marque']); ?></span></p>
+                <p class="modele_pres"><?= htmlspecialchars($product['modele']); ?></p>
+                <a href="show-product.php?id=<?= intval($product['id']); ?>" class="btn btn-product">Voir plus</a>
+            </article>
+            <?php endforeach ?>
+        </div>
+    </section>
+    <div id="jany_plus_background">
+        <section id="jany_plus">
+            <article class="article">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <h3>Technologie Soft-Air</h3>
+                <p class="techno_shoes">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at euismod massa. Nullam venenatis massa eget est venenatis efficitur. Cras a nisl a lacus ullamcorper dictum. In non mi ac orci blandit elementum id et lacus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin ac congue tortor..</p>
+            </article>
+            <article class="article">
+                <i class="fas fa-layer-group"></i>
+                <h3>Confort Flex</h3>
+                <p class="techno_shoes">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at euismod massa. Nullam venenatis massa eget est venenatis efficitur. Cras a nisl a lacus ullamcorper dictum. In non mi ac orci blandit elementum id et lacus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin ac congue tortor. Ut dolor felis, euismod quis facilisis a, luctus et libero.</p>
+            </article>
+            <article class="article_three">
+                <i class="fab fa-gratipay"></i>
+                <h3>Anti-Stress</h3>
+                <p class="techno_shoes">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at euismod massa. Nullam venenatis massa eget est venenatis efficitur. Cras a nisl a lacus ullamcorper dictum. In non mi ac orci blandit elementum id et lacus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin ac congue tortor. Ut dolor felis, euismod quis facilisis a, luctus et libero. Morbi id ornare orci, non placerat nibh.</p>
+            </article>
+            <article class="article_four">
+                <i class="fas fa-leaf"></i>
+                <h3>Matières naturelles</h3>
+                <p class="techno_shoes">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at euismod massa. Nullam venenatis massa eget est venenatis efficitur. Cras a nisl a lacus ullamcorper dictum. In non mi ac orci blandit elementum id et lacus.</p>
+            </article>
+        </section>
+    </div>
+    <section id="marques_list">
+        <div class="container">
+            <h2>Marques</h2>
+            <ul>
+                <?php foreach ($marques as $marque) : ?>
+                <li><a href="products.php?marque=<?= htmlspecialchars($marque['marque']) ?>"><?= htmlspecialchars($marque['marque']) ?></a></li>
+                <?php endforeach ?>
+            </ul>
+        </div>
+    </section>

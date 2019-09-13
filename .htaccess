@@ -1,0 +1,13 @@
+RewriteEngine On
+RewriteRule index.php libraries/Controllers/index.php
+RewriteRule products.php libraries/Controllers/products.php
+RewriteRule show-product.php libraries/Controllers/show-product.php
+RewriteRule change-news.php libraries/Controllers/change-news.php
+RewriteRule contact.php libraries/Controllers/contact.php
+RewriteRule delete-photo.php libraries/Controllers/delete-photo.php
+RewriteRule delete-product.php libraries/Controllers/delete-product.php
+RewriteRule edit-product.php libraries/Controllers/edit-product.php
+RewriteRule login.php libraries/Controllers/login.php
+RewriteRule logout.php libraries/Controllers/logout.php
+RewriteRule new-product.php libraries/Controllers/new-product.php
+RewriteRule admin.php libraries/Controllers/admin.php

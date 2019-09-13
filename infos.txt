@@ -1,0 +1,17 @@
+PHPMailer
+
+J'ai retiré mes infos concernant mon SMTP
+Si vous avez un compte Outlook, il suffit d'entrer vos identifiants ici :
+
+libraries\Controllers\contact.php
+
+ligne 48 & 49
+
+$mail->Username = ''; // Votre mail
+$mail->Password = ''; // Le password de votre boite mail
+
+ligne 53 & 54
+
+$mail->setFrom(''); // Votre mail
+$mail->addAddress(''); // Votre mail
+

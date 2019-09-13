@@ -1,0 +1,13 @@
+<section class="change-news container">
+    <form class="form container" action="" method="POST">
+        <fieldset>
+            <legend>Choisir la catégorie à afficher sur la page d'acceuil</legend>
+            <?php foreach ($categories as $category) : ?>
+            <label>
+                <input class="radio-input" type="radio" name="category_choice" id="<?= intval($category['category_id']) ?>" value="<?= intval($category['category_id']) ?>"><?= htmlspecialchars($category['title']) ?><br>
+                <?php endforeach ?>
+            </label>
+        </fieldset>
+        <button class="btn admin-btn" type="submit">Modifier</button>
+    </form>
+</section>
