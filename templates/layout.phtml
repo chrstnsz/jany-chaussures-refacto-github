@@ -17,33 +17,26 @@ if (isset($_SESSION['LAST_ACTIVITY']) && ((time() - $_SESSION['LAST_ACTIVITY']) 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Spécimen propose un large choix de chaussures confortables pour hommes et femmes." />
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat|Poiret+One" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=DM+Serif+Text&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick-theme.min.css">
-
+    <link href="https://fonts.googleapis.com/css?family=DM+Serif+Text|Montserrat|Open+Sans|Poiret+One&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="css/normalize.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="css/base.css" media="screen" />
-
     <link rel="stylesheet" type="text/css" href="css/style.css" media="screen" />
 
-    <title>Specimen</title>
+    <title>Specimen, votre boutique de chaussures sur Aix les Bains !</title>
 </head>
 
 <body>
     <header class="container">
         <div class="admin_nav">
             <?php if (isset($_SESSION['admin'])) : ?>
-                <a class="admin_nav_panel" href="admin.php">Admin Panel</a>
-                <a class="admin_nav_panel" href="logout.php">Se déconnecter <i class="fas fa-sign-out-alt"></i></a>
+                <a class="admin_nav_panel" href="admin.php" title="Panneau de configuration">Admin Panel</a>
+                <a class="admin_nav_panel" href="logout.php" title="Déconnexion">Se déconnecter <i class="fas fa-sign-out-alt"></i></a>
             <?php else : ?>
-                <a class="admin_nav_panel" href="login.php"><i class="fas fa-cogs"></i>Administration</a>
+                <a class="admin_nav_panel" href="login.php" title="Se connecter"><i class="fas fa-cogs"></i>Administration</a>
             <?php endif ?>
         </div>
         <button id="to-Top"><i class="fas fa-arrow-up"></i></button>
@@ -52,18 +45,18 @@ if (isset($_SESSION['LAST_ACTIVITY']) && ((time() - $_SESSION['LAST_ACTIVITY']) 
             <small>Chausseur depuis 1954</small>
         </div>
         <div class="nav-mobile">
-            <a href="#!" class="navbar-toggle" id="js-nav-toggle">
+            <a href="#!" class="navbar-toggle" id="js-nav-toggle" title="Déroulez le menu">
                 <span></span> </a>
         </div>
         <div id="nav_space">
             <nav id="top_nav" class="top_nav navbar stroke container">
 
                 <ul class="main-nav" id="js-menu">
-                    <li><a class="nav-links" href="index.php">Accueil</a></li>
-                    <li><a class="nav-links" href="products.php">Collection</a></li>
-            <!--    <li><a class="nav-links" href="#">Programme de fidélité</a></li>  -->
-                    <li><a class="nav-links" href="contact.php">Contact</a></li>
-            <!--    <li><a class="nav-links" href="#">Qui sommes-nous ?</a></li>    -->
+                    <li><a class="nav-links" href="index.php" title="Accueil">Accueil</a></li>
+                    <li><a class="nav-links" href="products.php" title="Collection">Collection</a></li>
+                    <!--    <li><a class="nav-links" href="#" title="Programme de fidélité">Programme de fidélité</a></li>  -->
+                    <li><a class="nav-links" href="contact.php" title="Contactez-nous">Contact</a></li>
+                    <!--    <li><a class="nav-links" href="#" title="Historique de la boutique">Qui sommes-nous ?</a></li>    -->
                 </ul>
             </nav>
         </div>
@@ -86,11 +79,11 @@ if (isset($_SESSION['LAST_ACTIVITY']) && ((time() - $_SESSION['LAST_ACTIVITY']) 
             <nav id="footer_nav">
                 <h3>Menu</h3>
                 <ul>
-                    <li><a href="index.php">Accueil</a></li>
-                    <li><a href="products.php">Collection</a></li>
-            <!--    <li><a href="#">Programme de fidélité</a></li>  -->
-                    <li><a href="contact.php">Contact</a></li>
-            <!--   <li><a href="#">Qui sommes-nous?</a></li>    -->
+                    <li><a href="index.php" title="Accueil">Accueil</a></li>
+                    <li><a href="products.php" title="Collection">Collection</a></li>
+                    <!--    <li><a href="#" title="Programme de fidélité">Programme de fidélité</a></li>  -->
+                    <li><a href="contact.php" title="Contact">Contact</a></li>
+                    <!--   <li><a href="#" title="Historique de la boutique">Qui sommes-nous?</a></li>    -->
                 </ul>
             </nav>
             <div id="footer_infos">
@@ -108,12 +101,10 @@ if (isset($_SESSION['LAST_ACTIVITY']) && ((time() - $_SESSION['LAST_ACTIVITY']) 
                 </article>
             </div>
         </div>
-        <p class="copyright">Copyright © specimen 2019 - Réalisé par <a href="https://christiansaez.fr">Christian Saez</a> – Tous droits réservés</p>
+        <p class="copyright">Copyright © specimen 2019 - Réalisé par <a href="https://christiansaez.fr" title="Site développé par Christian Saez">Christian Saez</a> – Tous droits réservés</p>
     </footer>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.min.js"></script>
 
 <script type="text/javascript" src="js/script.js"></script>
 
